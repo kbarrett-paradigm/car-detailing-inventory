@@ -1,0 +1,102 @@
+/* Global Page Styling */
+body {
+
+    font-family: Arial, sans-serif; /* Font used throughout dashboard */
+    background: #f5f5f5; /* Light gray background */
+    margin: 0; /* Remove browser defaults */
+    padding: 20px; /* Space around page */
+}
+
+/* Header */
+header {
+
+    margin-bottom: 30px; /* Space below title */
+}
+
+/* Dashboard Stat Cards Section */
+.stats {
+
+    display: flex;  /* Space between cards */
+    justify-content: center;    /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+    gap: 20px;  /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
+}
+
+/* Individual Stat Cards */
+.card {
+
+    background: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 180px;
+    box-shadow: 0 2px 8px #0000001a;
+}
+
+
+/* Dashboard Stat Cards Section */
+.search {
+
+    display: flex;
+    justify-content: center;    /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+}
+
+/* Search Field */
+#search {
+
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin: 25px 0;
+}
+
+/* Product Grid */
+
+#products {
+
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(280px, 1fr)); /* Automatically create columns based on screen size. */
+    gap: 20px;
+}
+
+/* Individual Product Card */
+
+.product-card {
+
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+
+/* Progress Bar */
+
+.progress {
+
+    background: #ddd;
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+
+    height: 100%; /* Width gets assigned by JavaScript. */
+
+/* Debug Panel*/
+
+#debug {
+
+    margin-top: 30px;
+    padding: 15px;
+    background: #ffffff;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
+}

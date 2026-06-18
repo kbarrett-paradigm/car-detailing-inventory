@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+    <html lang="en">
+<head>
+    <!-- Character encoding -->
+    <meta charset="UTF-8">
+    <!-- Makes site mobile-friendly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="normal" />
+    <!-- Browser tab title -->
+    <title>Kevin's Detailing Inventory</title>
+    <!-- Connect CSS file -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Main page heading -->
+    <header>
+        <h1 style="text-align: center;">Kevin's Car Detailing Inventory</h1>
+    </header>
+
+    <!-- Dashboard statistics section -->
+    <section class="stats">
+        <!-- Total products card -->
+        <div class="card">
+            <h2 id="productCount">0</h2>
+            <p>Total Products</p>
+        </div>
+        <!-- Inventory value card -->
+        <div class="card">
+            <h2 id="inventoryValue">$0</h2>
+            <p>Inventory Value</p>
+        </div>
+        <!-- Low inventory card -->
+        <div class="card">
+            <h2 id="lowInventory">0</h2>
+            <p>Low Inventory</p>
+        </div>
+    </section>
+
+    <!-- Search box section -->
+    <section class="search">
+        <div>
+        <input
+            type="text"
+            id="search"
+            placeholder="Search inventory..."
+        >
+        </div>
+    </section>
+
+    <!-- Product cards section - get injected here by JavaScript... Nothing needs to be manually added here.
+        Example:
+        Brake Buster
+        Green Star
+        ONR
+    -->
+    <section id="products"></section>
+
+    <!-- DEBUG PANEL - Shows connection status and troubleshooting info -->
+    <div id="debug"></div>
+
+    <!-- Load JavaScript AFTER page loads -->
+    <script src="app.js"></script>
+
+</body>
+</html>
