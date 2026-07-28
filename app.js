@@ -155,19 +155,19 @@ function renderProducts(products) {
     <div class="button-group">
 
     <button
-        onclick="updateRemaining('${product["Product Name"]}', -10)">
+        onclick="updateRemaining('${product["Product Id"]}', -10)">
         Use 10%
     </button>
 
     <button
-        onclick="updateRemaining('${product["Product Name"]}', 100)">
+        onclick="updateRemaining('${product["Product Id"]}', 100)">
         Refill
     </button>
 
     <br><br>
 
     <button
-        onclick="updateQuantity('${product["Product Name"]}', -1)">
+        onclick="updateQuantity('${product["Product Id"]}', -1)">
         -
     </button>
 
@@ -175,7 +175,7 @@ function renderProducts(products) {
     ${product["Quantity (Bottles)"] || 0}
 
     <button
-        onclick="updateQuantity('${product["Product Name"]}', 1)">
+        onclick="updateQuantity('${product["Product Id"]}', 1)">
         +
     </button>
 
@@ -241,30 +241,6 @@ function applyCurrentFilter() {
 
 }
 
-    /* Current search term - commented out for testing above code
-    const term =
-        e.target.value.toLowerCase();
-
-    /* Find matching products 
-    const filtered = inventory.filter(item => {
-
-        const searchableText = `
-            ${item["Product Name"] || ""}
-            ${item["Brand"] || ""}
-            ${item["Category"] || ""}
-        `.toLowerCase();
-
-        return searchableText.includes(term);
-
-    });
-
-    renderProducts(filtered);*/
-
-
-
-
-
-
 /*
 ====================================
 UPDATE REMAINING %
@@ -284,7 +260,7 @@ change =
 ====================================
 */
 
-async function updateRemaining(productName, change) {
+async function updateRemaining(productId, change) {
 
 const formData = new FormData();
 
@@ -292,7 +268,7 @@ formData.append(
     "payload",
     JSON.stringify({
         action: "updateRemaining",
-        productName: productName,
+        productId: productId,
         change: change
     })
 );
@@ -325,7 +301,7 @@ change
 ====================================
 */
 
-async function updateQuantity(productName, change) {
+async function updateQuantity(productId, change) {
 
     const formData = new FormData();
 
@@ -335,7 +311,7 @@ async function updateQuantity(productName, change) {
 
             action: "updateQuantity",
 
-            productName: productName,
+            productId: productId,
 
             change: change
 
