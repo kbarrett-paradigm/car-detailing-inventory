@@ -90,6 +90,21 @@ function renderDashboard() {
         "lowInventory"
     ).textContent =
         lowCount;
+
+    /* Count products with 0 bottle quantity */
+    const lowQuantity =
+        inventory.filter(item =>
+
+            Number(
+                item["Quantity (Bottles)"]
+            ) === 0
+
+        ).length;
+
+    document.getElementById(
+        "lowInventory"
+    ).textContent =
+        lowQuantity + lowCount;
 }
 
 /* PRODUCT CARDS */
@@ -151,8 +166,8 @@ function renderProducts(products) {
                 ${percent}%
             </p>
 
-            
-    <div class="button-group">
+
+<div class="button-group">
 
     <button
         onclick="updateRemaining('${product["Product Id"]}', -10)">
@@ -182,26 +197,25 @@ function renderProducts(products) {
 </div>
 
 
-            <div class="progress">
+<div class="progress">
 
-                <div
-                    class="progress-bar"
+    <div
+        class="progress-bar"
+            style="
+                width:${percent}%;
 
-                    style="
-                        width:${percent}%;
-
-                        background:
-                        ${
-                            percent <= 40
-                            ? '#ff0000;'
-                            : percent <= 70
-                            ? '#ffbf00;'
-                            : '#009900;'
+                    background:
+                    ${
+                        percent <= 40
+                        ? '#ff0000;'
+                        : percent <= 70
+                        ? '#ffbf00;'
+                        : '#009900;'
                         };
                     ">
-                </div>
+    </div>
 
-            </div>
+</div>
 
         `;
 
@@ -241,62 +255,84 @@ function applyCurrentFilter() {
 
 }
 
+
 /*
 ====================================
 UPDATE REMAINING %
-
 Called when:
 Use 10%
 Refill
-
 Parameters:
-
-productName = Product to update
-
+productId = Product to update
 change =
 -10 = subtract 10%
-
 100 = refill to 100%
 ====================================
 */
 
 async function updateRemaining(productId, change) {
 
-const formData = new FormData();
+    const formData = new FormData();
 
-formData.append(
-    "payload",
-    JSON.stringify({
-        action: "updateRemaining",
-        productId: productId,
-        change: change
-    })
-);
+    formData.append(
+        "payload",
+        JSON.stringify({
+            action: "updateRemaining",
+            productId: productId,
+            change: change
+        })
+    );
 
-await fetch(API_URL, {
+    await fetch(API_URL, {
+        method: "POST",
+        body: formData
+    });
 
-    method: "POST",
+    // Find the product we just updated
 
-    body: formData
+    const product =
+        inventory.find(p =>
+            Number(p["Product Id"]) === Number(productId)
+        );
 
-});
+    //Update the local copy
 
-   await loadInventory();
+    if (product) {
+
+        if (change === 100) {
+
+            product["Percent Remaining (Current Bottle)"] = 100;
+
+        } else {
+
+            product["Percent Remaining (Current Bottle)"] += change;
+
+            product["Percent Remaining (Current Bottle)"] =
+                Math.max(
+                    0,
+                    Math.min(
+                        100,
+                        product["Percent Remaining (Current Bottle)"]
+                    )
+                );
+
+        }
+
+    }
+
+    //Refresh the cards using the already-loaded inventory.
+
+    applyCurrentFilter();
 
 }
 
 /*
 ====================================
 UPDATE QUANTITY
-
 Parameters:
-
-productName
-
-change
-
+productId
+change:
 +1 = add bottle
-
 -1 = remove bottle
 ====================================
 */
@@ -326,7 +362,24 @@ async function updateQuantity(productId, change) {
 
     });
 
-   await loadInventory();
+   const product =
+    inventory.find(p =>
+        Number(p["Product Id"]) === Number(productId)
+    );
+
+if (product) {
+
+    product["Quantity (Bottles)"] += change;
+
+    product["Quantity (Bottles)"] =
+        Math.max(
+            0,
+            product["Quantity (Bottles)"]
+        );
+
+}
+
+applyCurrentFilter()
 
 }
 
