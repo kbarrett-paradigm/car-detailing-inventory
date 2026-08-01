@@ -321,7 +321,7 @@ async function updateRemaining(productId, change) {
     }
 
     //Refresh the cards using the already-loaded inventory.
-
+    renderDashboard();
     applyCurrentFilter();
 
 }
@@ -379,6 +379,7 @@ if (product) {
 
 }
 
+renderDashboard();
 applyCurrentFilter()
 
 }
