@@ -82,11 +82,12 @@ header {
 
 .progress {
 
-    background: #ddd;
+    background: #dddddd;
     height: 12px;
     border-radius: 6px;
     overflow: hidden;
     margin-top: 10px;
+    border: 1px solid #000000;
 }
 
 .progress-bar {
@@ -144,6 +145,7 @@ header {
 
     .progress {
     height: 20px;
+    border: 1px solid #000000;
 }
 
 }
