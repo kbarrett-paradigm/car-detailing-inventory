@@ -35,7 +35,7 @@ try {
     inventory =
         await response.json();
     document.getElementById("debug").innerHTML = `
-        API Connected ✓<br>
+        API Connected ✔️<br>
         Products Loaded: ${inventory.length}<br>
         Last Refresh: ${new Date().toLocaleTimeString()}
     `;
@@ -49,7 +49,6 @@ try {
         ${error.message}
     `;
     console.error(error);
-
 }
 }
 
@@ -102,9 +101,9 @@ function renderDashboard() {
         ).length;
 
     document.getElementById(
-        "lowInventory"
+        "outStock"
     ).textContent =
-        lowQuantity + lowCount;
+        lowQuantity;
 }
 
 /* PRODUCT CARDS */
