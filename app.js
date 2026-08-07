@@ -137,33 +137,33 @@ function renderProducts(products) {
             <h3><u>${product["Product Name"]}</u></h3>
 
             <p>
-                <strong>Brand:</strong>
-                ${product.Brand}
+                <b>Brand:</b>
+                <b>${product.Brand}</b>
             </p>
 
             <p>
-                <strong>Category:</strong>
-                ${product.Category}
+                <b>Category:</b>
+                <b>${product.Category}</b>
             </p>
 
             <p>
-                <strong>Quantity:</strong>
-                ${product["Quantity (Bottles)"]} Bottle(s)
+                <b>Quantity:</b>
+                <b>${product["Quantity (Bottles)"]} Bottle(s)</b>
             </p>
 
             <p>
-                <strong>Notes:</strong>
-                ${product.Notes}
+                <b>Notes:</b>
+                <b>${product.Notes}</b>
             </p>
 
             <p>
-                <strong>Link to Item:</strong>
-                <a href="${product.Link}" target="_blank">Link to purchase.</a>
+                <b>Link to Item:</b>
+                <b><a href="${product.Link}" target="_blank">Link to purchase.</a></b>
             </p>
 
             <p>
-                <strong>Remaining (Current Bottle):</strong>
-                ${percent}%
+                <b>Remaining (Current Bottle):</b>
+                <b>${percent}%</b>
             </p>
 
 
@@ -171,27 +171,27 @@ function renderProducts(products) {
 
     <button
         onclick="updateRemaining('${product["Product Id"]}', -10)">
-        Use 10%
+        <b>Use 10%</b>
     </button>
 
     <button
         onclick="updateRemaining('${product["Product Id"]}', 100)">
-        Refill
+        <b>Refill</b>
     </button>
 
     <br><br>
 
     <button
         onclick="updateQuantity('${product["Product Id"]}', -1)">
-        -
+        <b>-</b>
     </button>
 
-    Quantity:
+    <b>Quantity:</b>
     ${product["Quantity (Bottles)"] || 0}
 
     <button
         onclick="updateQuantity('${product["Product Id"]}', 1)">
-        +
+        <b>+</b>
     </button>
 
 </div>
