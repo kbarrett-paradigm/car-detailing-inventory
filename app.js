@@ -187,7 +187,7 @@ function renderProducts(products) {
     </button>
 
     <b>Quantity:</b>
-    ${product["Quantity (Bottles)"] || 0}
+    <b>${product["Quantity (Bottles)"] || 0}</b>
 
     <button
         onclick="updateQuantity('${product["Product Id"]}', 1)">

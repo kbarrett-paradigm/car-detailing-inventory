@@ -2,7 +2,7 @@
 body {
 
     font-family: 'Roboto', sans-serif; /* Font used throughout dashboard */
-    background-image: linear-gradient(90deg, #d0d0d0, #000000, #d0d0d0); /* Light gray background */
+    background-image: linear-gradient(60deg, #1f3b4d, #000919, #000000); /* Light gray background */
     margin: 0; /* Remove browser defaults */
     padding: 20px; /* Space around page */
 }
@@ -78,6 +78,7 @@ header {
     box-shadow: 0 2px 8px rgba(2550,255,255,.9);
 }
 
+
 /* Progress Bar */
 
 .progress {
@@ -93,6 +94,7 @@ header {
 .progress-bar {
 
     height: 100%; /* Width gets assigned by JavaScript. */
+}
 
 /* Debug Panel*/
 
@@ -106,7 +108,7 @@ header {
     font-size: 14px;
     box-shadow: 0 2px 8px rgba(0,0,0,.1);
 }
-}
+
 
 @media (max-width: 768px) {
     body {
@@ -145,7 +147,6 @@ header {
 
     .progress {
     height: 20px;
-    border: 1px solid #000000;
 }
 
 }
