@@ -34,7 +34,7 @@ header {
     padding: 20px;
     border-radius: 10px;
     min-width: 180px;
-    box-shadow: 0 2px 8px #0000001a;
+    box-shadow: 0 2px 8px #0bd3d3e0;
 }
 
 
@@ -114,6 +114,18 @@ header {
     body {
     padding: 10px;
     text-align: center;
+}
+
+/* Individual Stat Cards */
+.card {
+
+    background: white;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    min-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
     .product-card {
