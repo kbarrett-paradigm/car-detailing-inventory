@@ -110,10 +110,20 @@ header {
 }
 
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 600px) {
     body {
     padding: 10px;
     text-align: center;
+}
+
+/* Dashboard Stat Cards Section */
+.stats {
+
+    display: flex;  /* Space between cards */
+    justify-content: center;    /* Centers horizontally */
+    align-items: center;    /* Centers vertically */
+    gap: 10px;  /* Allow wrapping on smaller screens */
+    flex-wrap: wrap;
 }
 
 /* Individual Stat Cards */
@@ -123,7 +133,7 @@ header {
     text-align: center;
     padding: 5px;
     border-radius: 10px;
-    min-width: 180px;
+    min-width: 120px;
     margin-left: auto;
     margin-right: auto;
 }
