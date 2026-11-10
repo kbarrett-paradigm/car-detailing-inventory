@@ -57,6 +57,147 @@
         </div>
     </section>
 
+
+<!-- Trigger/Open The Modal -->
+<section class="myBtn">
+<button id="myBtn">Add Product</button>
+</section>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+
+    <span class="close">&times;</span>
+
+    <div id="addProductForm" >
+
+        <h2>Add New Product</h2>
+
+        <!-- Category -->
+        <label for="newCategory">
+            Category:
+        </label>
+
+        <input
+            type="text"
+            id="newCategory"
+            placeholder="Example: Wheel Cleaner"
+        >
+<br />
+<br />
+        <!-- Product Name -->
+        <label for="newProductName">
+            Product Name:
+        </label>
+
+        <input
+            type="text"
+            id="newProductName"
+            placeholder="Example: Ultimate All Wheel Cleaner"
+        >
+<br />
+<br />
+        <!-- Brand -->
+        <label for="newBrand">
+            Brand:
+        </label>
+
+        <input
+            type="text"
+            id="newBrand"
+            placeholder="Example:Meguiars"
+        >
+<br />
+<br />
+        <!-- Quantity -->
+        <label for="newQuantity">
+            Quantity (Bottles):
+        </label>
+
+        <input
+            type="number"
+            id="newQuantity"
+            value="1"
+            min="0"
+        >
+<br />
+<br />
+        <!-- Percent Remaining -->
+        <label for="newPercent">
+            Percent Remaining:
+        </label>
+
+        <input
+            type="number"
+            id="newPercent"
+            value="100"
+            min="0"
+            max="100"
+        >
+<br />
+<br />
+        <!-- Purchase Price -->
+        <label for="newPurchasePrice">
+            Purchase Price:
+        </label>
+
+        <input
+            type="number"
+            id="newPurchasePrice"
+            value="0"
+            min="0"
+            step="0.01"
+        >
+<br />
+<br />
+        <!-- Notes -->
+        <label for="newNotes">
+            Notes:
+        </label>
+
+        <textarea
+            id="newNotes"
+            placeholder="Optional notes about this product.">
+        </textarea>
+<br />
+<br />
+        <!-- Purchase Link -->
+        <label for="newLink">
+            Link:
+        </label>
+
+        <input
+            type="url"
+            id="newLink"
+            placeholder="https://..."
+        >
+
+<br />
+
+<br />
+        <!-- Save button -->
+        <button
+            type="button"
+            onclick="addNewProduct()">
+            Save Product
+        </button>
+<br />
+<br />
+        <!-- Cancel button -->
+        <button
+            type="button"
+            onclick="hideAddProductForm()">
+            Cancel
+        </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+
     <!-- Product cards section - get injected here by JavaScript... Nothing needs to be manually added here.
         Example:
         Brake Buster

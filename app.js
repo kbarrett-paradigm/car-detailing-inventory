@@ -384,6 +384,253 @@ applyCurrentFilter()
 
 }
 
+/* == JAVASCRIPT FOR MODAL == */
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+/* == JAVASCRIPT FOR FORM == */
+
+/* SHOW ADD PRODUCT FORM Displays the form used to create a new inventory item. */
+
+function showAddProductForm() {
+
+    document.getElementById(
+        "addProductForm"
+    ).style.display = "block";
+
+}
+
+/* HIDE ADD PRODUCT FORM Hides the form and clears all fields after cancelling. */
+
+function hideAddProductForm() {
+
+    document.getElementById(
+        "addProductForm"
+    )
+    {modal.style.display = "none";}
+}
+
+
+/* ADD NEW PRODUCT Collects the information entered into the form and sends it to Google Apps Script. Apps Script will create the new row and assign the Product ID. */
+
+async function addNewProduct() {
+
+/* Collect information from form */
+
+    const category =
+        document.getElementById(
+            "newCategory"
+        ).value.trim();
+
+    const productName =
+        document.getElementById(
+            "newProductName"
+        ).value.trim();
+
+    const brand =
+        document.getElementById(
+            "newBrand"
+        ).value.trim();
+
+    const quantity =
+        Number(
+            document.getElementById(
+                "newQuantity"
+            ).value
+        ) || 0;
+
+    const percent =
+        Number(
+            document.getElementById(
+                "newPercent"
+            ).value
+        );
+
+    const purchasePrice =
+        Number(
+            document.getElementById(
+                "newPurchasePrice"
+            ).value
+        ) || 0;
+
+    const notes =
+        document.getElementById(
+            "newNotes"
+        ).value.trim();
+
+    const link =
+        document.getElementById(
+            "newLink"
+        ).value.trim();
+
+
+    /* Basic validation */
+
+    if (!productName) {
+
+        alert(
+            "Please enter a Product Name."
+        );
+
+        return;
+
+    }
+
+
+    /* Create the data we will send to Google Apps Script. */
+
+    const formData =
+        new FormData();
+
+    formData.append(
+        "payload",
+        JSON.stringify({
+
+            action: "addProduct",
+
+            category: category,
+
+            productName: productName,
+
+            brand: brand,
+
+            quantity: quantity,
+
+            percent: percent,
+
+            purchasePrice: purchasePrice,
+
+            notes: notes,
+
+            link: link
+
+        })
+    );
+
+
+    /* Send new product to Google Sheet */
+
+    try {
+
+        const response =
+            await fetch(API_URL, {
+
+                method: "POST",
+
+                body: formData
+
+            });
+
+
+    /* Read the new product returned by Apps Script. */
+
+        const newProduct =
+            await response.json();
+
+
+    /* Add the new product to our local inventory array. */
+
+        inventory.push(
+            newProduct
+        );
+
+
+    /* Update dashboard statistics. */
+
+        renderDashboard();
+
+
+    /* Redisplay products using the current search/filter. */
+
+        applyCurrentFilter();
+
+
+    /* Clear and hide the form. */
+
+        hideAddProductForm();
+
+
+        document.getElementById(
+            "newCategory"
+        ).value = "";
+
+        document.getElementById(
+            "newProductName"
+        ).value = "";
+
+        document.getElementById(
+            "newBrand"
+        ).value = "";
+
+        document.getElementById(
+            "newQuantity"
+        ).value = "1";
+
+        document.getElementById(
+            "newPercent"
+        ).value = "100";
+
+        document.getElementById(
+            "newPurchasePrice"
+        ).value = "0";
+        
+        document.getElementById(
+            "newNotes"
+        ).value = "";
+
+        document.getElementById(
+            "newLink"
+        ).value = "";
+
+        alert(
+            "Product added successfully!"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Add product failed:",
+            error
+        );
+
+        alert(
+            "There was a problem adding the product."
+        );
+
+    }
+
+}
+
+
+
+
 /* INITIAL PAGE LOAD */
 
 /* Kick everything off. */
